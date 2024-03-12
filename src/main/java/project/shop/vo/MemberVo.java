@@ -6,8 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MemberVo {
-    private String id;
-    private String name;
-    private String birth;
-    private String num;
+    private String mId;
+    private String mName;
+    private String mBirth;
+    private String mNum;
 }

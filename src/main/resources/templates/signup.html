@@ -23,34 +23,34 @@
     </div>
 
     <div>
-        <label for="id">아이디</label>
-        <input type="text" id="id" th:field="*{id}" 
-        th:class="${errors?.containsKey('id')} ? 'form-control field-error' : 'form-control'"
+        <label for="mId">아이디</label>
+        <input type="text" id="mId" th:field="*{mId}" 
+        th:class="${errors?.containsKey('mId')} ? 'form-control field-error' : 'form-control'"
         class="form-control" placeholder="아이디를 입력하세요">
-        <div class="field-error" th:if="${errors?.containsKey('id')}" th:text="${errors['id']}">아이디를 입력해주세요</div>
+        <div class="field-error" th:if="${errors?.containsKey('mId')}" th:text="${errors['mId']}">아이디를 입력해주세요</div>
     
     </div>
     <div>
-        <label for="name">이름</label>
-        <input type="text" id="name" th:field="*{name}" 
-        th:class="${errors?.containsKey('name')} ? 'form-control field-error' : 'form-control'"
+        <label for="mName">이름</label>
+        <input type="text" id="mName" th:field="*{mName}" 
+        th:class="${errors?.containsKey('mName')} ? 'form-control field-error' : 'form-control'"
         class="form-control" placeholder="이름을 입력하세요">
-        <div class="field-error" th:if="${errors?.containsKey('name')}" th:text="${errors['name']}">이름을 입력해주세요</div>
+        <div class="field-error" th:if="${errors?.containsKey('mName')}" th:text="${errors['mName']}">이름을 입력해주세요</div>
     </div>
     <div>
-        <label for="birth">생년월일</label>
-        <input type="text" id="birth" th:field="*{birth}"
-        th:class="${errors?.containsKey('birth')} ? 'form-control field-error' : 'form-control'"
+        <label for="mBirth">생년월일</label>
+        <input type="text" id="mBirth" th:field="*{mBirth}"
+        th:class="${errors?.containsKey('mBirth')} ? 'form-control field-error' : 'form-control'"
         class="form-control" placeholder="생년월일을 입력하세요">
-        <div class="field-error" th:if="${errors?.containsKey('birth')}" th:text="${errors['birth']}">생년월일을 입력해주세요</div>
+        <div class="field-error" th:if="${errors?.containsKey('mBirth')}" th:text="${errors['mBirth']}">생년월일을 입력해주세요</div>
     </div>
 
     <div>
-        <label for="num">전화번호</label>
-        <input type="text" id="binumrth" th:field="*{num}"
-        th:class="${errors?.containsKey('num')} ? 'form-control field-error' : 'form-control'"
+        <label for="mNum">전화번호</label>
+        <input type="text" id="bimNumrth" th:field="*{mNum}"
+        th:class="${errors?.containsKey('mNum')} ? 'form-control field-error' : 'form-control'"
         class="form-control" placeholder="전화번호를 입력하세요">
-        <div class="field-error" th:if="${errors?.containsKey('num')}" th:text="${errors['num']}">전화번호를 입력해주세요</div>
+        <div class="field-error" th:if="${errors?.containsKey('mNum')}" th:text="${errors['mNum']}">전화번호를 입력해주세요</div>
     </div>
 
     <hr class="my-4">

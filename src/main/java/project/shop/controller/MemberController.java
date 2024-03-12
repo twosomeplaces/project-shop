@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import project.shop.vo.MemberVo;
 
-@Controller
+@NoArgsConstructor
 @Slf4j
 public class MemberController {
+
+    
 
     @GetMapping("/signup")
     public String signup(Model model){
@@ -31,16 +34,16 @@ public class MemberController {
         Map<String, String> errors = new HashMap<>();
 
         //검증 로직
-        if (!StringUtils.hasText(memberVo.getId())) {
+        if (!StringUtils.hasText(memberVo.getMId())) {
             errors.put("id", "아이디는 필수입니다.");
         }
-        if (!StringUtils.hasText(memberVo.getName())) {
+        if (!StringUtils.hasText(memberVo.getMName())) {
             errors.put("name", "이름은 필수입니다.");            
         }
-        if (!StringUtils.hasText(memberVo.getBirth())) {
+        if (!StringUtils.hasText(memberVo.getMBirth())) {
             errors.put("birth", "생년월일은 필수입니다.");
         }
-        if (!StringUtils.hasText(memberVo.getNum())) {
+        if (!StringUtils.hasText(memberVo.getMNum())) {
             errors.put("num", "전화번호는 필수입니다.");            
         }
 
@@ -52,7 +55,7 @@ public class MemberController {
         }
 
         //성공 로직
-        // MemberVo savedItem = itemRepository.save(item);
+        MemberVo savedItem = itemRepository.save(memberVo);
         // redirectAttributes.addAttribute("itemId", savedItem.getId());
         // redirectAttributes.addAttribute("status", true);
         return "redirect:/hello";
