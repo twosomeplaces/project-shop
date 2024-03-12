@@ -8,7 +8,32 @@
 
 <body>
     <div th:replace="~{fragments/bodyHeader :: bodyHeader}"/>
-    <p th:text="'안녕!. ' + ${data}">안녕하세요. 손님</p>
+    <div class="signup-container">
+        <h2>회원가입</h2>
+        <form id="signup-form">
+            <div class="form-group">
+                <label for="id">아이디</label>
+                <input type="text" id="id" name="id" required>
+            </div>
+            <div class="form-group">
+                <label for="name">이름</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="birth">생년월일</label>
+                <input type="date" id="birth" name="birth" required>
+            </div>
+            <div class="form-group">
+                <label for="num1">전화번호</label>
+                <input type="text" id="num1" name="num1" pattern="[0-9]{3}" maxlength="3" required> -
+                <input type="text" id="num2" name="num2" pattern="[0-9]{4}" maxlength="4" required> -
+                <input type="text" id="num3" name="num3" pattern="[0-9]{4}" maxlength="4" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">가입하기</button>
+            </div>
+        </form>
+    </div>
     <div th:replace="~{fragments/footer :: footer}" />
 </body>
 
