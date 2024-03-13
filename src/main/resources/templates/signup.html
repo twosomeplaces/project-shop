@@ -39,7 +39,7 @@
     </div>
     <div>
         <label for="mBirth">생년월일</label>
-        <input type="text" id="mBirth" th:field="*{mBirth}"
+        <input type="date" id="mBirth" th:field="*{mBirth}"
         th:class="${errors?.containsKey('mBirth')} ? 'form-control field-error' : 'form-control'"
         class="form-control" placeholder="생년월일을 입력하세요">
         <div class="field-error" th:if="${errors?.containsKey('mBirth')}" th:text="${errors['mBirth']}">생년월일을 입력해주세요</div>
@@ -49,7 +49,7 @@
         <label for="mNum">전화번호</label>
         <input type="text" id="bimNumrth" th:field="*{mNum}"
         th:class="${errors?.containsKey('mNum')} ? 'form-control field-error' : 'form-control'"
-        class="form-control" placeholder="전화번호를 입력하세요">
+        class="form-control" placeholder="전화번호를 입력하세요" maxlength="11">
         <div class="field-error" th:if="${errors?.containsKey('mNum')}" th:text="${errors['mNum']}">전화번호를 입력해주세요</div>
     </div>
 

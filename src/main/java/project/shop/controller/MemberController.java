@@ -12,14 +12,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import project.shop.service.MemberService;
 import project.shop.vo.MemberVo;
 
-@NoArgsConstructor
+@Controller
+@RequiredArgsConstructor
 @Slf4j
 public class MemberController {
 
-    
+    private final MemberService memberService;
 
     @GetMapping("/signup")
     public String signup(Model model){
@@ -28,23 +31,23 @@ public class MemberController {
     }
 
     @PostMapping("/signup")
-    public String addItem(@ModelAttribute MemberVo memberVo, RedirectAttributes redirectAttributes, Model model) {
+    public String save(@ModelAttribute MemberVo memberVo, RedirectAttributes redirectAttributes, Model model) {
         
         //검증 오류 결과를 보관
         Map<String, String> errors = new HashMap<>();
 
         //검증 로직
         if (!StringUtils.hasText(memberVo.getMId())) {
-            errors.put("id", "아이디는 필수입니다.");
+            errors.put("mId", "아이디는 필수입니다.");
         }
         if (!StringUtils.hasText(memberVo.getMName())) {
-            errors.put("name", "이름은 필수입니다.");            
+            errors.put("mName", "이름은 필수입니다.");            
         }
         if (!StringUtils.hasText(memberVo.getMBirth())) {
-            errors.put("birth", "생년월일은 필수입니다.");
+            errors.put("mBirth", "생년월일은 필수입니다.");
         }
         if (!StringUtils.hasText(memberVo.getMNum())) {
-            errors.put("num", "전화번호는 필수입니다.");            
+            errors.put("mNum", "전화번호는 필수입니다.");            
         }
 
         //검증에 실패하면 다시 입력 폼으로
@@ -55,7 +58,7 @@ public class MemberController {
         }
 
         //성공 로직
-        MemberVo savedItem = itemRepository.save(memberVo);
+        memberService.save(memberVo);
         // redirectAttributes.addAttribute("itemId", savedItem.getId());
         // redirectAttributes.addAttribute("status", true);
         return "redirect:/hello";
