@@ -2,21 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{fragments/header :: header}" />
 <head>
-    <title>Hello</title>
+    <title>Menu</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="css/coffee.css">
 </head>
 
 <body>
+    <div th:replace="~{fragments/bodyHeader :: bodyHeader}"/>
+   
 
-<!-- 헤더 위치 -->
-<head th:replace="~{fragments/header :: header}" />
 
 <div id="main" style="font-size:large; text-align: center; ">
 
   <div id="search" style="height: 150px;padding: 15px; font-size: small; width: 90%; margin-left: auto;  margin-right: auto;">
-    <h3>[ Coffee menu Management <span style="font-size:30px;">&#9749;</span> ]<th:block th:text="${hello}"></th:block></h3>
+    <h3>[ Coffee menu Management <span style="font-size:30px;">&#9749;</span> ]</h3>
 
-    <form name="fm_menu" autocomplete="on" action="/v3/menu_search" method="post">
+  <form name="fm_menu" autocomplete="on" action="/v3/menu_search" method="post">
       <fieldset>
 
         <legend> [검색조건] </legend>
@@ -44,16 +45,13 @@
 
   </div>
 
-  <form name="formTable" id="IdFormTable" method="post" action="/v3/menu_updatePriceAll">
+  <form name="formTable" id="IdFormTable">
   <table class="table">
     <thead>
       <tr class="tr_td">
         <th>Chk</th>
-        <th>커피No</th>
         <th>메뉴명</th>
         <th>가격</th>
-        <th>제품설명</th>
-        <th>알러지유발성분표기</th>
       </tr>
     </thead>
 
@@ -64,9 +62,6 @@
         <td><input type="checkbox" name="chkCoffeeNo" th:value="${prod.getMenuno()}"></td>
         <td th:text="${prod.getMenuname()}">메뉴명</td>
         <td th:text="${#numbers.formatInteger(prod.getMenuprice(), 0, 'COMMA')}">가격</td>
-        <!--        <td th:text="${prod.getPrice()}">가격</td>-->
-        <td th:text="${prod.getMenudesc()}">제품설명</td>
-        <td th:text="${prod.getMenualg()}">알러지유발성분표기</td>
       </tr>
 
     </tbody>
@@ -75,11 +70,7 @@
   </form>
 </div>
 
-<!-- 푸터 위치 -->
-<div th:replace="~{fragments/footer :: footer}" />
-
-
+    <div th:replace="~{fragments/footer :: footer}" />
 </body>
+
 </html>
-
-
