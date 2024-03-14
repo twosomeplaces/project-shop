@@ -27,7 +27,7 @@ public class MemberController {
     @GetMapping("/signup")
     public String signup(Model model){
         model.addAttribute("memberVo", new MemberVo());
-        return "signup";
+        return "member/signup";
     }
 
     @PostMapping("/signup")
@@ -54,14 +54,14 @@ public class MemberController {
         if (!errors.isEmpty()) {
             log.info("errors={}",errors);
             model.addAttribute("errors", errors);
-            return "signup";
+            return "member/signup";
         }
 
         //성공 로직
         memberService.save(memberVo);
         // redirectAttributes.addAttribute("itemId", savedItem.getId());
         // redirectAttributes.addAttribute("status", true);
-        return "redirect:/hello";
+        return "redirect:/";
     }
     
 }

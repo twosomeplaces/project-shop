@@ -1,15 +1,75 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/header :: header}" />
-<head>
-    <title>Hello</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-
-<body>
+<link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 560px;
+        }
+        .field-error {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+    </style>
+    <body>
+<div class="container">
 <div th:replace="~{fragments/bodyHeader :: bodyHeader}"/>
 
+<form th:action th:object="${memberVo}" method="post">
+
+    <div th:if="${errors?.containsKey('globalError')}">
+        <p class="field-error" th:text="${errors['globalError']}">전체 오류 메시지</p>
+    </div>
+
+    <div>
+        <label for="mId">아이디</label>
+        <input type="text" id="mId" th:field="*{mId}" 
+        th:class="${errors?.containsKey('mId')} ? 'form-control field-error' : 'form-control'"
+        class="form-control" placeholder="아이디를 입력하세요">
+        <div class="field-error" th:if="${errors?.containsKey('mId')}" th:text="${errors['mId']}">아이디를 입력해주세요</div>
+    
+    </div>
+    <div>
+        <label for="mName">이름</label>
+        <input type="text" id="mName" th:field="*{mName}" 
+        th:class="${errors?.containsKey('mName')} ? 'form-control field-error' : 'form-control'"
+        class="form-control" placeholder="이름을 입력하세요">
+        <div class="field-error" th:if="${errors?.containsKey('mName')}" th:text="${errors['mName']}">이름을 입력해주세요</div>
+    </div>
+    <div>
+        <label for="mBirth">생년월일</label>
+        <input type="date" id="mBirth" th:field="*{mBirth}"
+        th:class="${errors?.containsKey('mBirth')} ? 'form-control field-error' : 'form-control'"
+        class="form-control" placeholder="생년월일을 입력하세요">
+        <div class="field-error" th:if="${errors?.containsKey('mBirth')}" th:text="${errors['mBirth']}">생년월일을 입력해주세요</div>
+    </div>
+
+    <div>
+        <label for="mNum">전화번호</label>
+        <input type="text" id="bimNumrth" th:field="*{mNum}"
+        th:class="${errors?.containsKey('mNum')} ? 'form-control field-error' : 'form-control'"
+        class="form-control" placeholder="전화번호를 입력하세요" maxlength="11">
+        <div class="field-error" th:if="${errors?.containsKey('mNum')}" th:text="${errors['mNum']}">전화번호를 입력해주세요</div>
+    </div>
+
+    <hr class="my-4">
+
+    <div class="row">
+        <div class="col">
+            <button class="w-100 btn btn-primary btn-lg" type="submit">상품 등록</button>
+        </div>
+        <div class="col">
+            <button class="w-100 btn btn-secondary btn-lg"
+                    th:onclick="|location.href='@{/}'|"
+                    type="button" >취소</button>
+        </div>
+    </div>
+
+</form>
+<br/>
 <div th:replace="~{fragments/footer :: footer}" />
+</div> <!-- /container -->
 </body>
 
 </html>
