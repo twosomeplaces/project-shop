@@ -1,24 +1,24 @@
-package project.shop.service;
+// package project.shop.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import project.shop.dao.MenuDao;
-import project.shop.vo.MenuVo;
+// import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.stereotype.Service;
+// import project.shop.dao.MenuDao;
+// import project.shop.vo.MenuVo;
 
-import java.util.List;
+// import java.util.List;
 
-@Service
-public class MenuService {
+// @Service
+// public class MenuService {
 
-    @Autowired
-    MenuDao menuDao;
+//     @Autowired
+//     MenuDao menuDao;
 
 
-    public List<MenuVo> dolist(){
+//     public List<MenuVo> dolist(){
 
-        List<MenuVo> list = menuDao.doList();
+//         List<MenuVo> list = menuDao.doList();
 
-        return list;
+//         return list;
 
-    };
-}
+//     };
+// }
