@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragments/header :: header}" />
+<head>
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+<!-- 헤더 위치 -->
+<head th:replace="~{fragments/header :: header}" />
+
+<div id="main" style="font-size:large; text-align: center; ">
+
+  <div id="search" style="height: 150px;padding: 15px; font-size: small; width: 90%; margin-left: auto;  margin-right: auto;">
+    <h3>[ Coffee menu Management <span style="font-size:30px;">&#9749;</span> ]<th:block th:text="${hello}"></th:block></h3>
+
+    <form name="fm_menu" autocomplete="on" action="/v3/menu_search" method="post">
+      <fieldset>
+
+        <legend> [검색조건] </legend>
+        <label>등록기간</label><input type="date" id="start_date" name="start_date" min="2020-01-01" max="2030-12-31">
+        - <input type="date" id="end_date" name="end_date" min="2020-01-01" max="2030-12-31">
+        &nbsp;&nbsp;
+        <label>메뉴명</label> <input type="text" id="coffee" name="coffee">
+        &nbsp;&nbsp;
+        <label>종류</label> <select id="kind" name="kind">
+        <option value="ALL">전체</option>
+        <option value="커피">커피</option>
+        <option value="에이드">에이드</option>
+        <option value="논커피">논커피</option>
+      </select>
+
+        &nbsp;&nbsp;<input type="submit" value="조회" style="width: 80px;height: 30px;font-weight: bold; font-size: medium">
+        &nbsp;&nbsp;<button style="width: 80px;height: 30px;font-weight: bold; font-size: medium"><a href="/v3/menu_ins">등록</a></button>
+          <button type="button" id="IdUpdateAll" style="width: 80px;height: 30px;font-weight: bold; font-size: medium" onclick="onModify()">가격수정</button>
+        <!-- <a href="javascript:loadDocArray()">test</a> -->
+        <!--        <label>CheckBox : </label><span id="idCheckBox"></span>-->
+      </fieldset>
+
+    </form>
+
+
+  </div>
+
+  <form name="formTable" id="IdFormTable" method="post" action="/v3/menu_updatePriceAll">
+  <table class="table">
+    <thead>
+      <tr class="tr_td">
+        <th>Chk</th>
+        <th>커피No</th>
+        <th>메뉴명</th>
+        <th>가격</th>
+        <th>제품설명</th>
+        <th>알러지유발성분표기</th>
+      </tr>
+    </thead>
+
+
+    <tbody id="t_body">
+    <!--- 데이타 출력 부분 -->
+      <tr th:each="prod : ${list}">
+        <td><input type="checkbox" name="chkCoffeeNo" th:value="${prod.getMenuno()}"></td>
+        <td th:text="${prod.getMenuname()}">메뉴명</td>
+        <td th:text="${#numbers.formatInteger(prod.getMenuprice(), 0, 'COMMA')}">가격</td>
+        <!--        <td th:text="${prod.getPrice()}">가격</td>-->
+        <td th:text="${prod.getMenudesc()}">제품설명</td>
+        <td th:text="${prod.getMenualg()}">알러지유발성분표기</td>
+      </tr>
+
+    </tbody>
+  </table>
+    <input type="hidden" name="hidden_price">
+  </form>
+</div>
+
+<!-- 푸터 위치 -->
+<div th:replace="~{fragments/footer :: footer}" />
+
+
+</body>
+</html>
+
+
