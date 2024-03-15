@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
     <head th:replace="~{fragments/header :: header}" />
 <head>
     <title>Menu</title>
@@ -17,27 +17,18 @@
   <div id="search" style="height: 150px;padding: 15px; font-size: small; width: 90%; margin-left: auto;  margin-right: auto;">
     <h3>[ Coffee menu Management <span style="font-size:30px;">&#9749;</span> ]</h3>
 
-  <form name="fm_menu" autocomplete="on" action="/v3/menu_search" method="post">
+  <form name="fm_menu" autocomplete="on">
       <fieldset>
 
         <legend> [검색조건] </legend>
-        <label>등록기간</label><input type="date" id="start_date" name="start_date" min="2020-01-01" max="2030-12-31">
-        - <input type="date" id="end_date" name="end_date" min="2020-01-01" max="2030-12-31">
-        &nbsp;&nbsp;
+        <label>등록기간</label><input type="date" id="start_date" name="start_date">
+        - <input type="date" id="end_date" name="end_date">
         <label>메뉴명</label> <input type="text" id="coffee" name="coffee">
-        &nbsp;&nbsp;
-        <label>종류</label> <select id="kind" name="kind">
-        <option value="ALL">전체</option>
-        <option value="커피">커피</option>
-        <option value="에이드">에이드</option>
-        <option value="논커피">논커피</option>
       </select>
 
         &nbsp;&nbsp;<input type="submit" value="조회" style="width: 80px;height: 30px;font-weight: bold; font-size: medium">
-        &nbsp;&nbsp;<button style="width: 80px;height: 30px;font-weight: bold; font-size: medium"><a href="/v3/menu_ins">등록</a></button>
-          <button type="button" id="IdUpdateAll" style="width: 80px;height: 30px;font-weight: bold; font-size: medium" onclick="onModify()">가격수정</button>
-        <!-- <a href="javascript:loadDocArray()">test</a> -->
-        <!--        <label>CheckBox : </label><span id="idCheckBox"></span>-->
+          <button id="order" style="width: 80px;height: 30px;font-weight: bold; font-size: medium" onclick="onOrder()">주문</button>
+
       </fieldset>
 
     </form>
@@ -52,9 +43,9 @@
         <th>Chk</th>
         <th>메뉴명</th>
         <th>가격</th>
+        <th>주문</th>
       </tr>
     </thead>
-
 
     <tbody id="t_body">
     <!--- 데이타 출력 부분 -->
@@ -62,6 +53,7 @@
         <td><input type="checkbox" name="chkCoffeeNo" th:value="${prod.getMenuno()}"></td>
         <td th:text="${prod.getMenuname()}">메뉴명</td>
         <td th:text="${#numbers.formatInteger(prod.getMenuprice(), 0, 'COMMA')}">가격</td>
+        <td><a th:href="@{Coffee_orderOne(menuname=${prod.getMenuname()}, menuprice=${prod.getMenuprice()})}"> 주문 </a></td>
       </tr>
 
     </tbody>
@@ -71,6 +63,24 @@
 </div>
 
     <div th:replace="~{fragments/footer :: footer}" />
+
+<script>
+
+    
+<!--  function onOrder(){-->
+<!--    let _price = prompt("가격을 입력하세요");-->
+
+<!--    if(_price == undefined){-->
+<!--      return;-->
+<!--    }else if(_price ==""){-->
+<!--      alert("가격을 입력하세요");-->
+<!--      onModify();-->
+<!--    }else if(_price !==""){-->
+<!--      let _frm = document.formTable;-->
+<!--      _frm.hidden_price.value = _price;-->
+<!--      _frm.submit();-->
+    }
+</script>
 </body>
 
 </html>

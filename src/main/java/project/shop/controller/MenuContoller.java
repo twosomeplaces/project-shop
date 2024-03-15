@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.RequestParam;
 import project.shop.service.MenuService;
 import project.shop.vo.MenuVo;
 
@@ -30,5 +31,17 @@ public class MenuContoller {
         model.addAttribute("list", menulist);
         return "/menu/menu";
     }
+
+
+    // 주문하기
+    @RequestMapping("/Coffee_orderOne")
+    public String doOrder(@RequestParam String menuname,@RequestParam String menuprice, Model model) {
+        System.out.println(menuname);
+        model.addAttribute("menuname", menuname);
+        model.addAttribute("menuprice", menuprice);
+
+        return "/menu/Coffee_order";
+    }
+
 
 }
