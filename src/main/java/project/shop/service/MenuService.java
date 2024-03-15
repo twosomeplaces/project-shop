@@ -1,6 +1,5 @@
-// package project.shop.service;
+package project.shop.service;
 
-<<<<<<< HEAD
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;

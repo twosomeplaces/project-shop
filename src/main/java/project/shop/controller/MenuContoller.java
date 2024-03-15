@@ -1,6 +1,4 @@
-// package project.shop.controller;
-
-// import java.util.List;
+package project.shop.controller;
 
 import java.util.List;
 
@@ -18,12 +16,11 @@ public class MenuContoller {
 
     @Autowired
     MenuService menusvc;
-    MenuVo menuvo;
 
     @GetMapping("/menu")
     public String doMenu(Model model) {
         
-        List<menuvo> menulist = menusvc.dolist();
+        List<MenuVo> menulist = menusvc.dolist();
 
         model.addAttribute("list", menulist);
 
@@ -31,4 +28,16 @@ public class MenuContoller {
         return "/menu/menu";
     }
     
+
+    @GetMapping("/menu")
+    public String doOrder(Model model) {
+        
+        List<MenuVo> menulist = menusvc.dolist();
+
+        model.addAttribute("list", menulist);
+
+
+        return "/menu/menu";
+    }
+
 }
