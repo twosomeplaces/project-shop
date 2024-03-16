@@ -5,7 +5,11 @@
 
     <insert id="save" parameterType="project.shop.vo.MemberVo">
         insert into member 
-        values (member_seq.NEXTVAL , #{mId}, #{mName}, #{mBirth}, #{mNum})
+        values (member_seq.NEXTVAL , #{mId}, #{mPw}, #{mName}, #{mBirth}, #{mNum}, #{roles})
     </insert>
+
+    <select id="findOne" parameterType="String" resultType="project.shop.vo.MemberVo">
+        select * from member where mId = #{mId}
+    </select>
 
 </mapper>

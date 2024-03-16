@@ -1,11 +1,9 @@
 package project.shop.websocket;
 
-import project.shop.websocket.ChatRoomDTO;
 import org.springframework.stereotype.Repository;
 
 import jakarta.annotation.PostConstruct;
 import java.util.*;
-import java.util.stream.Stream;
 
 @Repository
 public class ChatRoomRepository {

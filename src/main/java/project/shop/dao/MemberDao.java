@@ -1,5 +1,7 @@
 package project.shop.dao;
 
+import java.util.Optional;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import project.shop.vo.MemberVo;
@@ -8,5 +10,6 @@ import project.shop.vo.MemberVo;
 public interface MemberDao {
 
     void save(MemberVo memberVo);
+    Optional<MemberVo> findOne(String insertedId);
     
 }

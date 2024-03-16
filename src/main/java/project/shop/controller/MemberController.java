@@ -3,6 +3,8 @@ package project.shop.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -23,6 +25,19 @@ public class MemberController {
 
     private final MemberService memberService;
 
+    @GetMapping("/index")
+    public String index(@AuthenticationPrincipal User user, Model model){
+        log.info("anth Id = {}", user.getUsername());
+        model.addAttribute("loginId", user.getUsername());
+        // model.addAttribute("loginRoles", user.getAuthorities());
+        return "redirect:/";
+    }
+
+    @GetMapping("/login")
+    public String login(Model model){
+        return "member/login";
+    }
+
     @GetMapping("/signup")
     public String signup(Model model){
         model.addAttribute("memberVo", new MemberVo());
@@ -31,13 +46,16 @@ public class MemberController {
 
     @PostMapping("/signup")
     public String save(@ModelAttribute MemberVo memberVo, RedirectAttributes redirectAttributes, Model model) {
-        
+        log.info("signupSave = {}", memberVo.getMId());
         //검증 오류 결과를 보관
         Map<String, String> errors = new HashMap<>();
 
         //검증 로직
         if (!StringUtils.hasText(memberVo.getMId())) {
             errors.put("mId", "아이디는 필수입니다.");
+        }
+        if (!StringUtils.hasText(memberVo.getMPw())) {
+            errors.put("mPw", "비밀번호는 필수입니다.");
         }
         if (!StringUtils.hasText(memberVo.getMName())) {
             errors.put("mName", "이름은 필수입니다.");            

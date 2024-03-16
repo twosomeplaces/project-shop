@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head th:replace="~{fragments/header :: header}" />
 <head>
     <title>Hello</title>
@@ -9,6 +9,23 @@
 <body>
 <div> <!-- container-->
 <div th:replace="~{fragments/bodyHeader :: bodyHeader}"/>
+
+<table>
+<!--인증시 사용된 객체에 대한 정보-->
+<b>Authenticated DTO:</b>
+<div sec:authorize="isAuthenticated()" sec:authentication="principal"></div>
+
+<br/>
+<!--인증시 사용된 객체의 Username (ID)-->
+<b>Authenticated username:</b>
+<div sec:authorize="isAuthenticated()" sec:authentication="name"></div>
+
+<br/>
+<!--객체의 권한-->
+<b>Authenticated admin role:</b>
+<div sec:authorize="isAuthenticated()" sec:authentication="principal.authorities"></div>
+</table>
+
     <div>
         <a href="/signup">signup</a>
         <a href="/login">login</a>
