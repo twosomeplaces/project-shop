@@ -4,7 +4,7 @@
 <head>
     <title>Menu</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <link rel="stylesheet" type="text/css" href="css/coffee.css">
+  <link th:href="@{/css/coffee.css}" rel="stylesheet">
 </head>
 
 <body>
@@ -64,23 +64,6 @@
 
     <div th:replace="~{fragments/footer :: footer}" />
 
-<script>
-
-    
-<!--  function onOrder(){-->
-<!--    let _price = prompt("가격을 입력하세요");-->
-
-<!--    if(_price == undefined){-->
-<!--      return;-->
-<!--    }else if(_price ==""){-->
-<!--      alert("가격을 입력하세요");-->
-<!--      onModify();-->
-<!--    }else if(_price !==""){-->
-<!--      let _frm = document.formTable;-->
-<!--      _frm.hidden_price.value = _price;-->
-<!--      _frm.submit();-->
-    }
-</script>
 </body>
 
 </html>

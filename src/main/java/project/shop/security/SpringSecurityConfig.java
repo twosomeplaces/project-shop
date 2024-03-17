@@ -35,8 +35,7 @@ public class SpringSecurityConfig {
                         .usernameParameter("username")
                         .passwordParameter("password")
                         .permitAll()	// 대시보드 이동이 막히면 안되므로 얘는 허용
-                )
-                .logout();
+                );
 
         return http.build();
     }

@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        // URL에서 쿼리 문자열 파라미터 값을 추출하는 함수
+        function getQueryParam(param) {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            return urlParams.get(param);
+        }
+
+        // 페이지 로드 시 sf 파라미터 값을 추출하여 <h1> 태그에 넣는 함수
+        window.onload = function() {
+            const sfValue = getQueryParam('sf');
+            if (sfValue) {
+                document.querySelector('h1').innerText = sfValue;
+            }
+        };
+    </script>
 </head>
 <body>
-$END$
+    <h1></h1>
 </body>
 </html>
