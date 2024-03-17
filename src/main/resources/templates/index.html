@@ -11,14 +11,11 @@
 <div th:replace="~{fragments/bodyHeader :: bodyHeader}"/>
 
 <table>
-<!--인증시 사용된 객체에 대한 정보-->
-<b>Authenticated DTO:</b>
-<div sec:authorize="isAuthenticated()" sec:authentication="principal"></div>
-
 <br/>
 <!--인증시 사용된 객체의 Username (ID)-->
-<b>Authenticated username:</b>
+<b>유저ID : </b>
 <div sec:authorize="isAuthenticated()" sec:authentication="name"></div>
+
 
 <br/>
 <!--객체의 권한-->
@@ -28,8 +25,12 @@
 
 </table>
     <div>
-        <a href="/signup">signup</a>
-        <a href="/login">login</a>
+
+        <!-- 인증되지 않은(로그인하지 않은) 사용자에게 보임 -->
+        <a sec:authorize="isAnonymous()" href="/login">login</a>
+        <a sec:authorize="isAnonymous()" href="/signup">signup</a>
+        <!-- ROLE_USER 권한을 가지고 있다면 보임 -->
+        <a sec:authorize="hasRole('USER')" href="/logout">logout</a>
         <a href="/chat/rooms">chat</a>
         <a href="/order">order</a>
         <a href="/menu">menu</a>
