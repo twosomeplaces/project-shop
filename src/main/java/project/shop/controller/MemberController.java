@@ -28,9 +28,10 @@ public class MemberController {
     @GetMapping("/index")
     public String index(@AuthenticationPrincipal User user, Model model){
         log.info("anth Id = {}", user.getUsername());
-        model.addAttribute("loginId", user.getUsername());
+        // model.addAttribute("username", user.getUsername());
+
         // model.addAttribute("loginRoles", user.getAuthorities());
-        return "redirect:/";
+        return "index";
     }
 
     @GetMapping("/login")

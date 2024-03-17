@@ -24,8 +24,9 @@
 <!--객체의 권한-->
 <b>Authenticated admin role:</b>
 <div sec:authorize="isAuthenticated()" sec:authentication="principal.authorities"></div>
-</table>
 
+
+</table>
     <div>
         <a href="/signup">signup</a>
         <a href="/login">login</a>
