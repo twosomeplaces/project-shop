@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 import jakarta.servlet.DispatcherType;
+import jakarta.servlet.http.HttpSession;
 
 @Configuration
 @EnableWebSecurity
@@ -35,7 +36,14 @@ public class SpringSecurityConfig {
                         .usernameParameter("username")
                         .passwordParameter("password")
                         .permitAll()	// 대시보드 이동이 막히면 안되므로 얘는 허용
-                );
+                )
+                .logout( logout -> { logout
+                .logoutUrl("/logout")   // 로그아웃 처리 URL (= form action url)
+                .logoutSuccessHandler((request, response, authentication) -> {
+                        response.sendRedirect("/");
+                }) // 로그아웃 성공 핸들러
+                .deleteCookies("remember-me"); // 로그아웃 후 삭제할 쿠키 지정
+                });
 
         return http.build();
     }
