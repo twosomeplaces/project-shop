@@ -53,7 +53,7 @@
         <td><input type="checkbox" name="chkCoffeeNo" th:value="${prod.menuno}" /></td>
         <td th:text="${prod.menuname}">메뉴명</td>
         <td th:text="${#numbers.formatInteger(prod.menuprice, 0, 'COMMA')}">가격</td>
-        <td><a th:href="@{Coffee_orderOne(menuname=${prod.menuname}, menuprice=${prod.menuprice})}">주문</a></td>
+        <td><a th:href="@{coffeeorderOne(menuname=${prod.menuname}, menuprice=${prod.menuprice})}">주문</a></td>
       </tr>
     </tbody>
     
