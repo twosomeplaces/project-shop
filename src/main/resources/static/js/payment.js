@@ -4,7 +4,7 @@ function paymentCof(){
 
     if(confirmation){
     IMP.init('imp31427128')
-         IMP.request_pay(
+    IMP.request_pay(
               {
                 // param
                 pg: 'kakaopay.TC0ONETIME', // PG사 코드표에서 선택

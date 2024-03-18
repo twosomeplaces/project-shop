@@ -4,9 +4,7 @@
 <mapper namespace="project.shop.dao.MenuDao">
 
     <select id="doList" resultType="project.shop.vo.MenuVo">
-        SELECT
-            MENUNO AS "menuno", MENUNAME AS "menuname", MENUPRICE AS "menuprice", MENUDESC AS "menudesc", MENUALG AS "menualg"
-        FROM coffee_menu
+        SELECT * FROM coffee_menu
     </select>
 
 </mapper>

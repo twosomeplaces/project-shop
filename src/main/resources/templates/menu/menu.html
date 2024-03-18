@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{fragments/header :: header}" />
 <head>
     <title>Menu</title>
@@ -50,10 +50,10 @@
     <tbody id="t_body">
     <!--- 데이타 출력 부분 -->
       <tr th:each="prod : ${list}">
-        <td><input type="checkbox" name="chkCoffeeNo" th:value="${prod.getMenuno()}"></td>
-        <td th:text="${prod.getMenuname()}">메뉴명</td>
-        <td th:text="${#numbers.formatInteger(prod.getMenuprice(), 0, 'COMMA')}">가격</td>
-        <td><a th:href="@{Coffee_orderOne(menuname=${prod.getMenuname()}, menuprice=${prod.getMenuprice()})}"> 주문 </a></td>
+        <td><input type="checkbox" name="chkCoffeeNo" th:value="${prod.getMenuno}"></td>
+        <td th:text="${prod.getMenuname}">메뉴명</td>
+        <td th:text="${#numbers.formatInteger(prod.getMenuprice, 0, 'COMMA')}">가격</td>
+        <td><a th:href="@{Coffee_orderOne(menuname=${prod.getMenuname}, menuprice=${prod.getMenuprice})}"> 주문 </a></td>
       </tr>
 
     </tbody>
