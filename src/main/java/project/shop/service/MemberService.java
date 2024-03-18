@@ -1,5 +1,6 @@
 package project.shop.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -37,6 +38,11 @@ public class MemberService {
     public Optional<MemberVo> findOne(String insertedId){
         Optional<MemberVo> findOne = memberDao.findOne(insertedId);
         return findOne;
+    }
+
+    public List<MemberVo> findAll(){
+        List<MemberVo> memberList = memberDao.findAll();
+        return memberList;
     }
     
 }

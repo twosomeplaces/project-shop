@@ -9,11 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import lombok.extern.slf4j.Slf4j;
 import project.shop.service.MenuService;
 import project.shop.vo.MenuVo;
 
 
 @Controller
+@Slf4j
 public class MenuContoller {
 
     @Autowired
@@ -21,13 +24,11 @@ public class MenuContoller {
 
     @GetMapping("/menu")
     public String doMenu(Model model) {
-        
         List<MenuVo> menulist = menusvc.dolist();
-
+        log.info("doMenuList = {}", menulist.size());
         model.addAttribute("list", menulist);
 
-
-        return "/menu/menu";
+        return "menu/menu";
     }
 
 
@@ -38,12 +39,12 @@ public class MenuContoller {
         model.addAttribute("menuprice",menuprice);
 
 
-        return "/menu/Coffee_order";
+        return "menu/Coffee_order";
     }
 
 
     @GetMapping("/pay_seccess")
     public String payment() {
-        return "/menu/pay_success";
+        return "menu/pay_success";
     }
 }

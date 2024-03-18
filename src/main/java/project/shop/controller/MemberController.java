@@ -1,6 +1,7 @@
 package project.shop.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -32,6 +33,14 @@ public class MemberController {
 
         // model.addAttribute("loginRoles", user.getAuthorities());
         return "index";
+    }
+
+    @GetMapping("/memberList")
+    public String memberList(Model model){
+        List<MemberVo> memberList = memberService.findAll();
+        log.info("memberList = {}", memberList.size());
+        model.addAttribute("list", memberList);
+        return "member/memberList";
     }
 
     @GetMapping("/login")
