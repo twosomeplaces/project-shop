@@ -10,7 +10,6 @@
 
 <body>
     <div th:replace="~{fragments/bodyHeader :: bodyHeader}"/>
-   
 
 
 <div id="main" style="font-size:large; text-align: center; ">
@@ -70,9 +69,6 @@
 </body>
 
 <script>
-    function updateTotal(element) {
-        // 필요한 경우에 따라 총 가격 업데이트 등의 로직을 추가할 수 있습니다.
-    }
 
     document.addEventListener("DOMContentLoaded", function() {
         var addButton = document.querySelectorAll(".btn-warning");
@@ -80,24 +76,16 @@
         addButton.forEach(function(button) {
             button.addEventListener("click", function() {
                 var row = this.closest("tr");
-                var menuno = row.querySelector("input[name='chkCoffeeNo']").value;
                 var menuname = row.querySelector("td:nth-child(2)").textContent;
-                var menuprice = row.querySelector("td:nth-child(3)").textContent.replace(/[^0-9]/g, '');
+                var menuprice = row.querySelector("td:nth-child(3)").textContent;
+                var menuqunt = row.querySelector("td:nth-child(4)").textContent;
 
                 // 장바구니에 추가하는 로직
-                addToCart(menuno, menuname, menuprice);
+                window.location.href = "/cart?menuname=" + menuname + "&menuprice=" + menuprice + "&menuqunt=" + menuqunt;
             });
         });
     });
 
-    function addToCart(menuno, menuname, menuprice) {
-        // 여기에 장바구니에 추가하는 코드를 작성합니다.
-        var confirmAdd = confirm("해당 상품이 장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
-        if (confirmAdd) {
-            window.location.href = "cart.html?menuno=" + menuno + "&menuname=" + menuname + "&menuprice=" + menuprice;
-        } else {
-            // 페이지 새로고침
-            location.reload();
         }
     }
 </script>

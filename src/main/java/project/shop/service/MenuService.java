@@ -22,4 +22,7 @@ public class MenuService {
         return list;
 
     };
+    public void docartadd(MenuVo menuvo) {
+        menuDao.docartadd(menuvo);
+    }
 }
