@@ -11,5 +11,4 @@ public interface MenuDao {
 
     List<MenuVo> doList();
 
-    void docartadd(MenuVo menuvo);
 }

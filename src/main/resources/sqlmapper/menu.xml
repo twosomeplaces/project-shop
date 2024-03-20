@@ -6,9 +6,5 @@
     <select id="doList" resultType="project.shop.vo.MenuVo">
         SELECT * FROM coffee_menu
     </select>
-<!--
-    <insert id="doList" parameterType="project.shop.vo.MenuVo">
-        SELECT * FROM coffee_menu
-    </insert>
--->
+
 </mapper>

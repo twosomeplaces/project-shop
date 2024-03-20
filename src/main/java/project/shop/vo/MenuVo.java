@@ -12,6 +12,5 @@ public class MenuVo {
     private String menuprice;
     private String menudesc;
     private String menualg;
-    private String menuqunt;
 
 }
