@@ -2,9 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="project.shop.dao.MenuDao">
-
+    <!--메뉴조회-->
     <select id="doList" resultType="project.shop.vo.MenuVo">
         SELECT * FROM coffee_menu
     </select>
 
+<!--    장바구니입력-->
+    <insert id="docartadd" parameterType="project.shop.vo.OrderVo">
+        insert into coffeecart(CARTID, CARTMENU, CARTPRICE, CARTQUNT)
+        values (#{orderid}, #{ordermenu}, #{orderprice}, #{orderqunt});
+    </insert>
 </mapper>

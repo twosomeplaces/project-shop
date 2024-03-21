@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import project.shop.dao.MenuDao;
 import project.shop.vo.MenuVo;
+import project.shop.vo.OrderVo;
 
 @Service
 public class MenuService {
@@ -22,4 +23,10 @@ public class MenuService {
         return list;
 
     };
+
+    public void docartadd(OrderVo ordervo) {
+
+        menuDao.docartadd(ordervo);
+
+    }
 }

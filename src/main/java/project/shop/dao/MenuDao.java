@@ -5,10 +5,12 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import project.shop.vo.MenuVo;
+import project.shop.vo.OrderVo;
 
 @Mapper
 public interface MenuDao {
 
     List<MenuVo> doList();
 
+    void docartadd(OrderVo ordervo);
 }
