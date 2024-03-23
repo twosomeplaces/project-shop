@@ -6,8 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -40,8 +40,13 @@ public class BoardController {
 
     @GetMapping("/add")
     public String addBoard(Model model){
-        model.addAttribute("boardVo", new BoardVo());
-        return "board/addBoard";
+        model.addAttribute("form", new BoardVo());
+        return "board/addBoadForm";
+    }
+
+    @PostMapping("/add")
+    public String addBoradForm(BoardVo form){
+        return "redirect:/board";
     }
     
 }
