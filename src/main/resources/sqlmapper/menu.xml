@@ -10,6 +10,13 @@
     <!--장바구니입력-->
     <insert id="docartadd" parameterType="project.shop.vo.OrderVo">
         insert into coffeecart(CARTID, CARTMENU, CARTPRICE, CARTQUNT)
-        values (#{orderid}, #{ordermenu}, #{orderprice}, #{orderqunt});
+        values (#{orderid}, #{ordermenu}, #{orderprice}, #{orderqunt})
     </insert>
+
+
+
+    <!--장바구니 조회-->
+    <select id="doorderlist" resultType="project.shop.vo.OrderVo">
+        select * from coffeecart
+    </select>
 </mapper>

@@ -3,6 +3,7 @@ package project.shop.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,13 +32,11 @@ public class MenuContoller {
         return "menu/menu";
     }
 
-
-    @GetMapping("/coffeeorderOne")
-    public String doOrder(@RequestParam String menuname, @RequestParam String menuprice, Model model) {
-
-        model.addAttribute("menuname",menuname);
-        model.addAttribute("menuprice",menuprice);
-
+//    장바구니 호출
+    @GetMapping("/coffeeorder")
+    public String doOrder(Model model) {
+        List<OrderVo> orderlist = menusvc.doorderlist();
+        model.addAttribute("list", orderlist);
 
         return "menu/coffeeorder";
     }
@@ -48,9 +47,17 @@ public class MenuContoller {
         return "menu/paysuccess";
     }
 
-
+//    장바구니에 물건 담은 후 장바구니로 이동
     @GetMapping("/cart")
     public String cartadd(@ModelAttribute OrderVo ordervo){
+
+        menusvc.docartadd(ordervo);
+        return "redirect:/coffeeorder";
+    }
+
+//    장바구니에 물건 담은 후 메뉴로 이동
+    @GetMapping("/cartback")
+    public String cartaddback(@ModelAttribute OrderVo ordervo){
 
         menusvc.docartadd(ordervo);
 

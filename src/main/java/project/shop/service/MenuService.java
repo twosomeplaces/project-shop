@@ -27,6 +27,11 @@ public class MenuService {
     public void docartadd(OrderVo ordervo) {
 
         menuDao.docartadd(ordervo);
+    }
 
+    public List<OrderVo> doorderlist() {
+
+        List<OrderVo> list = menuDao.doorderlist();
+        return list;
     }
 }
