@@ -1,6 +1,5 @@
 package project.shop.vo;
 
-
 import lombok.Getter;
 import lombok.Setter;
 
