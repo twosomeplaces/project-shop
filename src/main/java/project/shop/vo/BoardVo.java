@@ -12,7 +12,7 @@ public class BoardVo {
     private String boardContent;
     private String boardDate;
     private int boardView;
-    private String mId;
+    private int mNo;
     private int fileNo;
 
 }

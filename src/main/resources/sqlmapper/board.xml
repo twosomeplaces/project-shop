@@ -2,6 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="project.shop.dao.BoardDao">
+    
+    <select id="findAll" resultType="project.shop.vo.BoardVo">
+        select*from board
+        <!-- SELECT b.*, m.mId FROM board b INNER JOIN member m ON b.mNo = m.mNo; -->
+    </select>
 
+    <select id="findOne" parameterType="int" resultType="project.shop.vo.BoardVo">
+        select*from board where "boardNo" = ${boardNo}
+    </select>
 
 </mapper>
