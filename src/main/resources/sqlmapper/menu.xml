@@ -7,7 +7,7 @@
         SELECT * FROM coffee_menu
     </select>
 
-<!--    장바구니입력-->
+    <!--장바구니입력-->
     <insert id="docartadd" parameterType="project.shop.vo.OrderVo">
         insert into coffeecart(CARTID, CARTMENU, CARTPRICE, CARTQUNT)
         values (#{orderid}, #{ordermenu}, #{orderprice}, #{orderqunt});
