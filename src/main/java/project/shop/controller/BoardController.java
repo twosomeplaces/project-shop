@@ -41,11 +41,12 @@ public class BoardController {
     @GetMapping("/add")
     public String addBoard(Model model){
         model.addAttribute("form", new BoardVo());
-        return "board/addBoadForm";
+        return "board/addBoardForm";
     }
 
     @PostMapping("/add")
     public String addBoradForm(BoardVo form){
+        boardService.save(form);
         return "redirect:/board";
     }
     

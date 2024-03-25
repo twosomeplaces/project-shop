@@ -12,4 +12,8 @@
         select*from board where "boardNo" = ${boardNo}
     </select>
 
+    <insert id="save" parameterType="project.shop.vo.BoardVo">
+        insert into board values (board_seq.NEXTVAL, #{boardTitle}, #{boardContent}, #{boardDate}, #{boardView}, ${mNo}, ${fileNo})
+    </insert>
+
 </mapper>

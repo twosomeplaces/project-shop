@@ -23,5 +23,9 @@ public class BoardService {
         BoardVo item = boardDao.findOne(boardNo);
         return item;
     }
+
+    public void save(BoardVo form) {
+        boardDao.save(form);
+    }
     
 }

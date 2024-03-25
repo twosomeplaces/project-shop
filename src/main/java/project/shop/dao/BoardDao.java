@@ -12,5 +12,7 @@ public interface BoardDao {
     List<BoardVo> findAll();
 
     BoardVo findOne(int boardNo);
+
+    void save(BoardVo form);
     
 }
