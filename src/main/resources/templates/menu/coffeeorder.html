@@ -12,6 +12,7 @@
     <script th:src="@{/js/payment.js}"></script>
     <head th:replace="~{fragments/header :: header}"></head>
 </head>
+
 <body>
 <div id="main" style="font-size: large; text-align: center;">
     <h3>[ Coffee menu Management <span style="font-size:30px;">&#9749;</span> ]</h3>
@@ -22,6 +23,7 @@
             <th scope="col">가격</th>
             <th scope="col">수량</th>
             <th scope="col">합계</th>
+            <th scope="col">삭제</th>
         </tr>
         </thead>
         <tbody>
@@ -29,35 +31,22 @@
             <td th:text="${item.ordermenu}"></td>
             <td th:text="${item.orderprice}"></td>
             <td>
-                <input type="number" min="1" th:value="${item.orderqunt}" th:attr="data-price=${item.orderprice}" onchange="updateTotal(this)">
+                <input type="number" min="1" th:value="${item.orderqunt}" th:attr="data-price=${item.orderprice}">
             </td>
-            <td><input type="text" th:value="${item.orderprice * item.orderqunt}" readonly style="border: none; outline: none;"></td>
+            <td><input type="text" readonly style="border: none; outline: none;"></td>
+            <td><button id="delete" type="button" class="btn btn-primary" onclick="deleteRow(event)">삭제</button></td>
         </tr>
         <tr>
             <td colspan="4">
                 <button id="payment" type="button" class="btn btn-primary" onclick="paymentCof()">결제</button>
+                <a th:href="@{menu}">
                 <button id="cancel" type="button" class="btn btn-primary">취소</button>
+                </a>
             </td>
         </tr>
         </tbody>
     </table>
 </div>
-<script>
-    // 초기 합계 계산
-    window.onload = function() {
-        const price = parseFloat(document.querySelector('tbody td:nth-child(2)').innerText);
-        const quantity = parseInt(document.querySelector('tbody input[type="number"]').value);
-        const total = price * quantity;
-        document.querySelector('tbody input[type="text"]').value = total.toFixed(2).replace(/\.00$/, '');
-    }
-
-    function updateTotal(input) {
-        const price = parseFloat(input.parentNode.previousElementSibling.textContent); // 상품 가격
-        const quantity = parseInt(input.value); // 수량
-        const total = price * quantity; // 총 가격
-        input.parentNode.nextElementSibling.querySelector('input').value = total.toFixed(2).replace(/\.00$/, ''); // 총 가격 업데이트
-    }
-</script>
 <div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>

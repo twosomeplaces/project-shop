@@ -17,6 +17,20 @@
 
     <!--장바구니 조회-->
     <select id="doorderlist" resultType="project.shop.vo.OrderVo">
-        select * from coffeecart
+        SELECT cartid as orderid, cartmenu as ordermenu, cartprice as orderprice, SUM(cartqunt) AS orderqunt
+        FROM COFFEECART
+        WHERE cartid = #{id}
+        GROUP BY cartid, cartmenu, cartprice
     </select>
+
+<!--    결제성공시 장바구니 삭제-->
+    <delete id="dodeletecart">
+        delete from coffeecart where cartid =#{id}
+    </delete>
+
+
+<!--    장바구니 한줄삭제-->
+    <delete id="dodeleteone">
+        delete from coffeecart where cartid = #{orderid} and cartmenu = #{ordermenu}
+    </delete>
 </mapper>

@@ -15,5 +15,12 @@ public interface MenuDao {
 
     void docartadd(OrderVo ordervo);
 
-    List<OrderVo> doorderlist();
+//    장바구니조회
+    List<OrderVo> doorderlist(@RequestParam String id);
+
+//    장바구니 전체삭제
+    void dodeletecart(@RequestParam String id);
+
+//    장바구니 한줄삭제
+    void dodeleteone(String orderid, String ordermenu);
 }

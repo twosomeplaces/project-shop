@@ -1,3 +1,34 @@
+$(document).ready(function () {
+    // 페이지 로드 시 각 항목의 총 가격 계산하여 표시
+    calculateAndDisplayTotal();
+
+    // 각 항목의 수량이 변경될 때마다 총 가격 업데이트
+    $("input[type='number']").on('input', function () {
+        calculateAndDisplayTotal();
+    });
+});
+
+// 페이지 로드 시 각 항목의 총 가격 계산하여 표시하는 함수
+function calculateAndDisplayTotal() {
+    $("tbody tr").each(function () {
+        let price = parseFloat($(this).find("td:nth-child(2)").text()); // 메뉴 가격
+        let quantity = parseInt($(this).find("input[type='number']").val()); // 수량
+        let total = price * quantity; // 총 가격 계산
+        $(this).find("input[type='text']").val(total); // 총 가격 표시
+    });
+}
+//장바구니에서 한줄삭제
+function deleteRow(event){
+        let row = event.target.closest("tr");
+        let id = "aa1";
+        let menuname = row.querySelector("td:nth-child(1)").textContent;
+        let confirmy = confirm(menuname+"를 삭제하시겠습니까?")
+        if(confirmy){
+        window.location.href = "/deleteOne?orderid="+id+"&ordermenu="+menuname;
+        }
+}
+
+//결제진행
 function paymentCof(){
     const total = calculateTotal();
     const confirmation = confirm(total + " 원 결제 하시겠습니까?");
@@ -10,7 +41,7 @@ function paymentCof(){
                 pg: 'kakaopay.TC0ONETIME', // PG사 코드표에서 선택
                 pay_method: 'card', // 결제 방식
                 merchant_uid: makeMerchantUid(), // 결제 고유 번호
-                name: `커어어피`, // 제품명
+                name: `커피테스트`, // 제품명
                 amount: total, // 가격
                 //구매자 정보 ↓
                 buyer_email: "alsqod89@naver.com",
@@ -23,10 +54,10 @@ function paymentCof(){
                 // callback
                 if (rsp.success) {
                     alert("결제성공");
-                    window.location.href = "/pay_seccess?sf='결제성공'";
+                    window.location.href = "/pay_seccess?sf=success";
                 } else {
                     alert("결제실패");
-                    window.location.href = "/pay_seccess?sf='결제실패'";
+                    window.location.href = "/pay_seccess?sf=false";
                 }
               }
             );

@@ -33,7 +33,7 @@
         <!-- ROLE_USER 권한을 가지고 있다면 보임 -->
         <a sec:authorize="hasRole('USER')" href="/logout">logout</a>
         <a href="/chat/rooms">chat</a>
-        <a href="/order">order</a>
+        <a href="/coffeeorder">order</a>
         <a href="/menu">menu</a>
     </div>
 <div th:replace="~{fragments/footer :: footer}" />
