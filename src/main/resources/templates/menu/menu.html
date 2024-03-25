@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!--xmlns:sec => 시큐리티 라이브러리-->
     <head th:replace="~{fragments/header :: header}" />
 <head>
     <title>Menu</title>
@@ -17,24 +18,8 @@
 <div id="main" style="font-size:large; text-align: center; ">
 
   <div id="search" style="height: 150px;padding: 15px; font-size: small; width: 90%; margin-left: auto;  margin-right: auto;">
-      <div sec:authorize="isAuthenticated()" sec:authentication="name"></div>
+      <div style="display: none;" sec:authorize="isAuthenticated()" sec:authentication="name"></div> <!--시큐리티에서 이름 가져옴-->
       <h3>[ Coffee menu Management <span style="font-size:30px;">&#9749;</span> ]</h3>
-
-  <form name="fm_menu" autocomplete="on">
-      <fieldset>
-
-        <legend> [검색조건] </legend>
-        <label>등록기간</label><input type="date" id="start_date" name="start_date">
-        - <input type="date" id="end_date" name="end_date">
-        <label>메뉴명</label> <input type="text" id="coffee" name="coffee">
-      </select>
-
-        &nbsp;&nbsp;<input type="submit" value="조회" style="width: 80px;height: 30px;font-weight: bold; font-size: medium">
-          <button id="order" style="width: 80px;height: 30px;font-weight: bold; font-size: medium" onclick="onOrder()">주문</button>
-
-      </fieldset>
-
-    </form>
 
 
   </div>
