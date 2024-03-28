@@ -32,6 +32,8 @@
                 </tbody>
             </table>
         </div>
+        <a href="#" th:href="@{/board/{boardNo}/edit (boardNo=${board.boardNo})}"
+        class="btn btn-primary" role="button">수정</a>
     </div>
     <div th:replace="~{fragments/footer :: footer}" />
 </body>

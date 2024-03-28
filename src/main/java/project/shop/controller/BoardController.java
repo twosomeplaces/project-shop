@@ -46,8 +46,26 @@ public class BoardController {
 
     @PostMapping("/add")
     public String addBoradForm(BoardVo form){
+        log.info("addBoradForm = {}", form.toString());
         boardService.save(form);
         return "redirect:/board";
+    }
+
+    @GetMapping("/{boardNo}/edit")
+    public String updateItemForm(@PathVariable("boardNo") int boardNo, Model model){
+        BoardVo book = boardService.findOne(boardNo);
+        log.info("updateBoardForm = {}", book.toString());
+        // BookForm form  = new BookForm();
+        // form.setId(book.getId());
+        // form.setName(book.getName());
+        // form.setPrice(book.getPrice());
+        // form.setStockQuantity(book.getStockQuantity());
+        // form.setAuthor(book.getAuthor());
+        // form.setIsbn(book.getIsbn());
+
+        model.addAttribute("form", book);
+
+        return "board/updateBoardForm";
     }
     
 }
