@@ -14,5 +14,7 @@ public interface BoardDao {
     BoardVo findOne(int boardNo);
 
     void save(BoardVo form);
+
+    BoardVo updateBoard(int boardNo, String title, String content, int file);
     
 }

@@ -16,4 +16,8 @@
         insert into board values (board_seq.NEXTVAL, #{boardTitle}, #{boardContent}, #{boardDate}, #{boardView}, ${mNo}, ${fileNo})
     </insert>
 
+    <update id="updateBoard">
+        
+    </update>
+
 </mapper>
