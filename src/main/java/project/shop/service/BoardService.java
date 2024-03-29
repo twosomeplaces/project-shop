@@ -31,7 +31,7 @@ public class BoardService {
 
 
     @Transactional
-    public BoardVo updateBoard(int boardNo, String title, String content, int file) {
+    public BoardVo updateBoard(int boardNo, String title, String content, String file) {
         BoardVo findBoard =  boardDao.updateBoard(boardNo, title, content, file );
         return findBoard;
     }

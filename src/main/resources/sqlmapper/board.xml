@@ -13,11 +13,11 @@
     </select>
 
     <insert id="save" parameterType="project.shop.vo.BoardVo">
-        insert into board values (board_seq.NEXTVAL, #{boardTitle}, #{boardContent}, #{boardDate}, #{boardView}, ${mNo}, ${fileNo})
+        insert into board values (board_seq.NEXTVAL, #{boardTitle}, #{boardContent}, #{boardDate}, #{boardView}, ${mNo}, #{fileName})
     </insert>
 
-    <update id="updateBoard">
-        
+    <update id="updateBoard" parameterType="project.shop.vo.BoardVo">
+        update board set boardTitle = #{boardTitle}, boardContent = #{boardContent}, fileName = #{fileName} where boardNo = ${boardNo}
     </update>
 
 </mapper>

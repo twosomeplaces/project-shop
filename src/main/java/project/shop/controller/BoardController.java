@@ -71,7 +71,8 @@ public class BoardController {
 
     @PostMapping("/{boardNo}/edit")
     public String updateForm(@PathVariable int boardNo, @ModelAttribute("form") BoardVo form ){
-        boardService.updateBoard(boardNo, form.getBoardTitle(), form.getBoardContent(), form.getFileNo());
+        log.info("updateForm title = {}", form.getBoardTitle());
+        boardService.updateBoard(boardNo, form.getBoardTitle(), form.getBoardContent(), form.getFileName());
         return "redirect:/borad/{boardNo}";
     }
     

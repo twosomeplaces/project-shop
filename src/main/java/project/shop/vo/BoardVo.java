@@ -13,6 +13,6 @@ public class BoardVo {
     private String boardDate;
     private int boardView;
     private int mNo;
-    private int fileNo;
+    private String fileName;
 
 }

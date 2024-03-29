@@ -71,28 +71,8 @@
             </div>
             <div class="form-group">
                 <label th:for="stockQuantity">파일</label>
-                <input type="file" th:field="*{fileNo}" class="form-control" placeholder="파일">
+                <input type="file" th:field="*{fileName}" class="form-control" placeholder="파일">
             </div>
-            <form id="saveForm" method="post" autocomplete="off" enctype="multipart/form-data"></form>
-            <tr>
-                <th>첨부파일</th>
-                <td colspan="3">
-                    <div class="file_list">
-                        <div>
-                            <div class="file_input">
-                                <input type="text" readonly />
-                                <label> 첨부파일
-                                    <input type="file" name="files" onchange="selectFile(this);" />
-                                </label>
-                            </div>
-                            <button type="button" onclick="removeFile(this);"
-                                class="btns del_btn"><span>삭제</span></button>
-                            <button type="button" onclick="addFile();" class="btns fn_add_btn"><span>파일
-                                    추가</span></button>
-                        </div>
-                    </div>
-                </td>
-            </tr>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         <br />
