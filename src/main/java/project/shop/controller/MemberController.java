@@ -85,7 +85,7 @@ public class MemberController {
         }
 
         //성공 로직
-        memberService.save(memberVo);
+        memberService.saeve(memberVo);
         // redirectAttributes.addAttribute("itemId", savedItem.getId());
         // redirectAttributes.addAttribute("status", true);
         return "redirect:/";
